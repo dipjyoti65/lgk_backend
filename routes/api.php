@@ -25,6 +25,17 @@ use App\Http\Controllers\Api\OrderHistoryController;
 // Authentication routes
 Route::post('/login', [AuthController::class, 'login']);
 
+// Temporary public endpoint for testing (REMOVE IN PRODUCTION)
+Route::get('/temp/brick-types', [BrickTypeController::class, 'active']);
+Route::get('/temp/test', function () {
+    return response()->json([
+        'status' => 'success',
+        'message' => 'API is working!',
+        'timestamp' => now(),
+        'server' => 'LGK Brick Management API'
+    ]);
+});
+
 // Protected routes
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
